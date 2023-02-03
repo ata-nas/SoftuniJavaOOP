@@ -20,9 +20,7 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName.length() < 3) {
-            throw new IllegalArgumentException("First name cannot be less than 3 symbols");
-        }
+        validateName(firstName, "First");
         this.firstName = firstName;
     }
 
@@ -31,9 +29,7 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        if (firstName.length() < 3) {
-            throw new IllegalArgumentException("Last name cannot be less than 3 symbols");
-        }
+        validateName(lastName, "Last");
         this.lastName = lastName;
     }
 
@@ -41,8 +37,8 @@ public class Person {
         return age;
     }
 
-    public void setAge(int age) {
-        if (age < 0) {
+     public void setAge(int age) {
+        if (age <= 0) {
             throw new IllegalArgumentException("Age cannot be zero or negative integer");
         }
         this.age = age;
@@ -59,6 +55,20 @@ public class Person {
         this.salary = salary;
     }
 
+    private static void validateName(String name, String messagePref) {
+        if (name.length() < 3) {
+            throw new IllegalArgumentException(messagePref + " name cannot be less than 3 symbols");
+        }
+    }
+
+    public void increaseSalary(double bonus) {
+        double actualBonus = age < 30 ? bonus / 2 : bonus;
+
+        double bonusFactor = 1.00 + actualBonus / 100;
+
+        setSalary(salary * bonusFactor);
+    }
+
     @Override
     public String toString() {
 //        return String.format("%s %s is %d years old.",
@@ -66,13 +76,5 @@ public class Person {
         DecimalFormat df = new DecimalFormat("0.0##");
         return String.format("%s %s gets %s leva",
                 firstName, lastName, df.format(salary));
-    }
-
-    public void increaseSalary(double bonus) {
-        if (this.age >= 30) {
-            this.setSalary(this.getSalary() + (this.getSalary() * bonus / 100));
-        } else {
-            this.setSalary(this.getSalary() + (this.getSalary() * bonus / 200));
-        }
     }
 }
