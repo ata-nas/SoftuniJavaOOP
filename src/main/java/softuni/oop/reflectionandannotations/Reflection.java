@@ -35,7 +35,7 @@ public class Reflection implements Serializable {
         return name;
     }
 
-    private void setName(String name) {
+    private void setName(@StringInject String name) {
         this.name = name;
     }
 

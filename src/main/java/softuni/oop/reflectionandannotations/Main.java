@@ -2,6 +2,8 @@ package softuni.oop.reflectionandannotations;
 
 import com.sun.source.tree.ModifiersTree;
 
+import java.lang.annotation.Annotation;
+import java.lang.annotation.ElementType;
 import java.lang.reflect.*;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -106,5 +108,21 @@ public class Main {
 //                .toArray(Method[]::new);
 //
 //        Arrays.stream(setters).forEach(m -> System.out.printf("%s have to be private!%n", m.getName()));
+//
+//        +++Annotations
+//
+//        Reflection reflection = clazz.getDeclaredConstructor().newInstance();
+//
+//        Method setNameReflection = clazz.getDeclaredMethod("setName", String.class);
+//
+//        setNameReflection.setAccessible(true);
+//
+//        Annotation[][] parameterAnnotations = setNameReflection.getParameterAnnotations();
+//
+//        StringInject annotation = (StringInject) parameterAnnotations[0][0];
+//
+//        setNameReflection.invoke(reflection, annotation.value());
+//
+//        System.out.println();
     }
 }
