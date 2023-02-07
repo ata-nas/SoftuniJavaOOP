@@ -111,6 +111,8 @@ public class Main {
 //
 //        +++Annotations
 //
+//        Class<Reflection> clazz = Reflection.class;
+//
 //        Reflection reflection = clazz.getDeclaredConstructor().newInstance();
 //
 //        Method setNameReflection = clazz.getDeclaredMethod("setName", String.class);
